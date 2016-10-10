@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity
         scoreText.setText("score : " + score);
     }
 
-    private void setButtons() {
+        private void setButtons() {
 
         for(int i = 0; i < BTN_COUNT; i++) {
             int randNum = (int) (Math.random() * 9 + 1);
@@ -83,6 +83,11 @@ public class MainActivity extends AppCompatActivity
 
     public void onClick(View v) {
 
+        if(gameCount == 3) {
+            Toast.makeText(this, "게임이 끝났습니다.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         for(int i = 0; i < BTN_COUNT; i++) {
            buttons[i].setBackgroundColor(Color.RED);
            buttons[i].setTextColor(Color.RED);
@@ -109,12 +114,5 @@ public class MainActivity extends AppCompatActivity
             setScore();
             btnCount = 0;
         }
-
-        if(gameCount == 3) {
-
-            Toast.makeText(this, "게임이 끝났습니다.", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
     }
 }
